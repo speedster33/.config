@@ -33,6 +33,7 @@ bindsym $mod+b exec $browser
 bindsym $mod+d exec Discord
 bindsym $mod+Shift+d exec teams
 bindsym $mod+m exec MultiMC
+bindsym $mod+Shift+m exec steam
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -135,29 +136,43 @@ bindsym $mod+Shift+period exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+mode "config" {
+    bindsym i exec kitty -e nvim ~/.config/i3/config;
+    bindsym f exec kitty -e nvim ~/.config/fish/config.fish;
+    bindsym k exec kitty -e nvim ~/.config/kitty/kitty.conf
+    bindsym v exec kitty -e nvim ~/.config/nvim/init.vim;
+    bindsym n exec kitty -e nvim ~/.config/nvim/init.vim
+
+    # back to normal: Enter or Escape or $mod+c
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+c mode "config"
 
 # class                 border  bground text    indicator child_border
 client.focused          #00FF00 #222222 #007777 #0000FF   #00FF00
@@ -190,3 +205,4 @@ exec --no-startup-id xdg-user-dirs-update
 # StartUp
 exec_always . ~/.fehbg
 exec_always setxkbmap -option caps:escape
+exec_always xinput set-prop 9 314 -0.75
