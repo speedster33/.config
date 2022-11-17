@@ -38,6 +38,8 @@ bindsym $mod+Shift+d exec teams
 bindsym $mod+m exec MultiMC
 bindsym $mod+Shift+m exec steam
 
+bindsym $mod+w exec libreoffice
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -114,16 +116,21 @@ assign [class="chromium"] 1
 assign [class="browser"] 1
 
 assign [class="discord"] 2
-assign [class="team"] 2
+assign [class="teams"] 2
 
 assign [class="kitty"] 3
 assign [class="code"] 3
+assign [class="vsc"] 3
 assign [class="term"] 3
 
 assign [class="MultiMC"] 4
 assign [class="Minecraft"] 4
 assign [class="Steam"] 4
 assign [class="Terraria"] 4
+
+assign [class="libre"] 4
+
+assign [class="obs"] 5
 
 # switch to workspace
 bindsym $mod+apostrophe workspace number $ws1
