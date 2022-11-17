@@ -230,4 +230,5 @@ exec --no-startup-id xdg-user-dirs-update
 exec_always . ~/.fehbg
 exec_always setxkbmap -option caps:escape
 exec_always xinput set-prop 9 314 -0.75
-exec_always --no-starup-id Discord
+exec_always --no-startup-id Discord
+exec_always --no-startup-id onedrive --monitor
