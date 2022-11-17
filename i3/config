@@ -31,6 +31,10 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+Return exec code
 
 bindsym $mod+b exec $browser
+bindsym $mod+Shfit+b exec chromium-browser
+bindsym $mod+Control+b exec qutebrowser
+
+bindsym $mod+semicolon exec $browser https://bju.instructure.edu/
 
 bindsym $mod+d exec Discord
 bindsym $mod+Shift+d exec teams
@@ -232,3 +236,5 @@ exec_always setxkbmap -option caps:escape
 exec_always xinput set-prop 9 314 -0.75
 exec_always --no-startup-id Discord
 exec_always --no-startup-id onedrive --monitor
+exec --no-startup-id $browser https://bju.apogee.us/home
+exec --no-startup-id $browser https://xkcd.com

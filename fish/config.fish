@@ -18,4 +18,6 @@ fish_vi_cursor
 alias v nvim
 alias vi nvim
 alias vim nvim
+
+alias brave brave-browser
 alias mc MultiMC
