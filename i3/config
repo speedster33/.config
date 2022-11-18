@@ -1,7 +1,6 @@
 # i3 config file (v4)
 set $mod Mod4
 set $browser brave-browser
-
 font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
@@ -21,28 +20,29 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 10% && $refresh_i3status
+bindsym exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 20% && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec kitty
-bindsym $mod+Shift+Return exec code
+bindsym $mod+b exec $browser; workspace 1
+bindsym $mod+Shfit+b exec chromium-browser; workspace 1
+bindsym $mod+Control+b exec qutebrowser; workspace 1
+bindsym $mod+semicolon exec $browser https://bju.instructure.com/; workspace 1
 
-bindsym $mod+b exec $browser
-bindsym $mod+Shfit+b exec chromium-browser
-bindsym $mod+Control+b exec qutebrowser
 
-bindsym $mod+semicolon exec $browser https://bju.instructure.edu/
+bindsym $mod+d exec Discord; workspace 2
+bindsym $mod+Shift+d exec teams; workspace 2
 
-bindsym $mod+d exec Discord
-bindsym $mod+Shift+d exec teams
+bindsym $mod+Return exec kitty; workspace 3
+bindsym $mod+Shift+Return exec code; workspace 3
 
-bindsym $mod+m exec MultiMC
-bindsym $mod+Shift+m exec steam
+bindsym $mod+m exec MultiMC; workspace 4
+bindsym $mod+Shift+m exec steam; workspace 4
+bindsym $mod+w exec libreoffice; workspace 4
 
-bindsym $mod+w exec libreoffice
+bindsym $mod+Control+m exec flatpak run com.obsproject.Studio; workspace 5
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -116,25 +116,25 @@ set $ws4 "4"
 set $ws5 "5"
 
 # default workspaces
-assign [class="chromium"] 1
-assign [class="browser"] 1
+assign [class="(?i)chromium"] 1
+assign [class="(?i)browser"] 1
 
-assign [class="discord"] 2
-assign [class="teams"] 2
+assign [class="(?i)discord"] 2
+assign [class="(?i)teams"] 2
 
-assign [class="kitty"] 3
-assign [class="code"] 3
-assign [class="vsc"] 3
-assign [class="term"] 3
+assign [class="(?i)kitty"] 3
+assign [class="(?i)code"] 3
+assign [class="(?i)Visual"] 3
+assign [class="(?i)term"] 3
 
-assign [class="MultiMC"] 4
-assign [class="Minecraft"] 4
-assign [class="Steam"] 4
-assign [class="Terraria"] 4
+assign [class="(?i)MultiMC"] 4
+assign [class="(?i)Minecraft"] 4
+assign [class="(?i)Steam"] 4
+assign [class="(?i)Terraria"] 4
 
-assign [class="libre"] 4
+assign [class="(?i)libre"] 4
 
-assign [class="obs"] 5
+assign [class="(?i)obs"] 5
 
 # switch to workspace
 bindsym $mod+apostrophe workspace number $ws1
@@ -184,8 +184,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 mode "config" {
-    bindsym i exec kitty -e nvim ~/.config/i3/config;
-    bindsym f exec kitty -e nvim ~/.config/fish/config.fish;
+    bindsym i exec kitty -e nvim ~/.config/i3/config; exec mode "default"
+    bindsym f exec mode "default"; exec kitty -e nvim ~/.config/fish/config.fish
     bindsym k exec kitty -e nvim ~/.config/kitty/kitty.conf
     bindsym v exec kitty -e nvim ~/.config/nvim/init.vim;
     bindsym n exec kitty -e nvim ~/.config/nvim/init.vim
@@ -236,5 +236,5 @@ exec_always setxkbmap -option caps:escape
 exec_always xinput set-prop 9 314 -0.75
 exec_always --no-startup-id Discord
 exec_always --no-startup-id onedrive --monitor
-exec --no-startup-id $browser https://bju.apogee.us/home
+exec --no-startup-id $browser https://bju.apogee.us
 exec --no-startup-id $browser https://xkcd.com
