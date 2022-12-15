@@ -8,7 +8,7 @@ font pango:DejaVu Sans Mono 8
 exec --no-startup-id dex-autostart --autostart --environment i3
 
 # i3lock
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 
 # Network manager
 exec --no-startup-id nm-applet
@@ -38,6 +38,8 @@ bindsym $mod+Return exec kitty; workspace 3
 bindsym $mod+Shift+Return exec code; workspace 3
 
 bindsym $mod+m exec MultiMC; workspace 4
+bindsym $mod+Shift+w exec ~/WarThunder/launcher; workspace 4
+bindsym $mod+Control+Shift+m exec "~/Documents/Lunar Client-2.14.0.AppImage"; workspace 4
 bindsym $mod+Shift+m exec steam; workspace 4
 bindsym $mod+w exec libreoffice; workspace 4
 
@@ -128,6 +130,8 @@ assign [class="(?i)Visual"] 3
 assign [class="(?i)term"] 3
 
 assign [class="(?i)MultiMC"] 4
+assign [class="(?i)thunder"] 4
+assign [class="(?i)lunar"] 4
 assign [class="(?i)Minecraft"] 4
 assign [class="(?i)Steam"] 4
 assign [class="(?i)Terraria"] 4
@@ -156,6 +160,8 @@ bindsym $mod+Shift+semicolon reload
 bindsym $mod+Control+semicolon restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Control+Shift+semicolon exec i3-msg exit
+# lock
+bindsym $mod+Escape exec i3lock -c 000000
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -184,10 +190,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 mode "config" {
-    bindsym i exec kitty -e nvim ~/.config/i3/config; exec mode "default"
+    bindsym i exec kitty -e nvim ~/.config/i3/config
     bindsym f exec mode "default"; exec kitty -e nvim ~/.config/fish/config.fish
     bindsym k exec kitty -e nvim ~/.config/kitty/kitty.conf
-    bindsym v exec kitty -e nvim ~/.config/nvim/init.vim;
+    bindsym v exec kitty -e nvim ~/.config/nvim/init.vim
     bindsym n exec kitty -e nvim ~/.config/nvim/init.vim
 
     # back to normal: Enter or Escape or $mod+c
@@ -233,6 +239,7 @@ exec --no-startup-id xdg-user-dirs-update
 # StartUp
 exec_always . ~/.fehbg
 exec_always setxkbmap -option caps:escape
+exec_always xset r 300 30
 exec_always xinput set-prop 9 314 -0.75
 exec_always --no-startup-id Discord
 exec_always --no-startup-id onedrive --monitor
