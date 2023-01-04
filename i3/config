@@ -1,5 +1,5 @@
 # i3 config file (v4)
-set $mod Mod4
+set $mod Mod1
 set $browser brave-browser
 font pango:DejaVu Sans Mono 8
 
@@ -25,6 +25,11 @@ bindsym exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 20% && $refres
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+bindsym Mod4 exec $browser
+bindsym $mod+i exec setxkbmap -option
+bindsym $mod+Shift+i exec setxkbmap -option caps:escape
+bindsym $mod+Shift+S exec alacritty -e ssh ubuntu@129.80.182.118 -i ~/Documents/code/ssh-key-mcSpeedOracle.key
+
 bindsym $mod+b exec $browser; workspace 1
 bindsym $mod+Shfit+b exec chromium-browser; workspace 1
 bindsym $mod+Control+b exec qutebrowser; workspace 1
@@ -38,7 +43,6 @@ bindsym $mod+Return exec kitty; workspace 3
 bindsym $mod+Shift+Return exec code; workspace 3
 
 bindsym $mod+m exec MultiMC; workspace 4
-bindsym $mod+Shift+w exec ~/WarThunder/launcher; workspace 4
 bindsym $mod+Control+Shift+m exec "~/Documents/Lunar Client-2.14.0.AppImage"; workspace 4
 bindsym $mod+Shift+m exec steam; workspace 4
 bindsym $mod+w exec libreoffice; workspace 4
@@ -240,7 +244,7 @@ exec --no-startup-id xdg-user-dirs-update
 exec_always . ~/.fehbg
 exec_always setxkbmap -option caps:escape
 exec_always xset r 300 30
-exec_always xinput set-prop 9 314 -0.75
+exec_always xinput set-prop 9 314 -0.80
 exec_always --no-startup-id Discord
 exec_always --no-startup-id onedrive --monitor
 exec --no-startup-id $browser https://bju.apogee.us
